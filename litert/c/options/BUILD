@@ -231,6 +231,36 @@ cc_test(
     ],
 )
 
+# VERISILICON ####################################################################################
+
+cc_library(
+    name = "litert_verisilicon_options",
+    srcs = ["litert_verisilicon_options.cc"],
+    hdrs = ["litert_verisilicon_options.h"],
+    deps = [
+        "//litert/c:litert_common",
+        "//litert/c/internal:litert_options_helper",
+        "//litert/cc:litert_macros",
+        "//litert/core:litert_toml_parser",
+        "@com_google_absl//absl/strings",
+        "@com_google_absl//absl/strings:string_view",
+    ],
+    # Keep the symbols in the LiteRT runtime libraries.
+    alwayslink = True,
+)
+
+cc_test(
+    name = "litert_verisilicon_options_test",
+    srcs = ["litert_verisilicon_options_test.cc"],
+    deps = [
+        ":litert_verisilicon_options",
+        "//litert/c:litert_common",
+        "//litert/test:matchers",
+        "@com_google_absl//absl/strings:string_view",
+        "@com_google_googletest//:gtest_main",
+    ],
+)
+
 config_setting(
     name = "litert_gpu_use_ir_model_true",
     define_values = {"litert_gpu_use_ir_model": "true"},

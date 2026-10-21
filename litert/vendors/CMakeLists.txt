@@ -32,6 +32,7 @@ option(LITERT_ENABLE_ARM_VULKAN_ML "Enable Arm ML extensions for Vulkan dispatch
 option(LITERT_ENABLE_QUALCOMM "Enable Qualcomm dispatch build (requires QNN SDK headers/libs)" ${LITERT_ENABLE_ALL_VENDORS})
 option(LITERT_ENABLE_SAMSUNG "Enable Samsung NPU build" ${LITERT_ENABLE_ALL_VENDORS})
 option(LITERT_ENABLE_BROADCOM "Enable Broadcom BNE build" ${LITERT_ENABLE_ALL_VENDORS})
+option(LITERT_ENABLE_VERISILICON "Enable Verisilicon VIPLite dispatch build" ${LITERT_ENABLE_ALL_VENDORS})
 
 if(LITERT_ENABLE_MEDIATEK AND NOT NEUROPILOT_HEADERS_DIR)
   if(NOT NEUROPILOT_HEADERS_URL AND NOT NEUROPILOT_GIT_REPO)
@@ -284,6 +285,10 @@ function(_litert_add_dispatch_so VENDOR DIR OUTPUT_BASENAME)
     )
   endif()
 
+  if(VENDOR STREQUAL "Verisilicon")
+    list(APPEND DISPATCH_SRCS "${SRC_DIR}/viplite_adapter_api.cc")
+  endif()
+
   set(TGT "dispatch_api_${VENDOR}_so")
   add_library(${TGT} SHARED ${DISPATCH_SRCS})
   if(VENDOR STREQUAL "MediaTek")
@@ -409,4 +414,11 @@ if(LITERT_ENABLE_BROADCOM)
   else()
     message(STATUS "Skipping Broadcom dispatch: BSTORM core source not found at ${_BSTORM_CORE_CHECK}")
   endif()
+endif()
+
+# Verisilicon
+if(LITERT_ENABLE_VERISILICON)
+  _litert_add_dispatch_so(Verisilicon "verisilicon/dispatch" "Verisilicon")
+else()
+  message(STATUS "Skipping Verisilicon dispatch: LITERT_ENABLE_VERISILICON is OFF")
 endif()

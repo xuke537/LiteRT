@@ -268,6 +268,19 @@ cc_library(
     ],
 )
 
+cc_library(
+    name = "litert_verisilicon_options",
+    hdrs = ["litert_verisilicon_options.h"],
+    deps = [
+        ":litert_concrete_options_base",
+        "//litert/c:litert_common",
+        "//litert/c/options:litert_verisilicon_options",
+        "//litert/cc:litert_expected",
+        "//litert/cc:litert_macros",
+    ],
+    alwayslink = True,
+)
+
 cc_test(
     name = "litert_runtime_options_test",
     srcs = ["litert_runtime_options_test.cc"],
@@ -307,6 +320,7 @@ filegroup(
         "litert_qualcomm_options.h",
         "litert_runtime_options.h",
         "litert_samsung_options.h",
+        "litert_verisilicon_options.h",
     ],
     visibility = ["//litert/cc_sdk:__pkg__"],
 )

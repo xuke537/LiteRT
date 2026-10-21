@@ -218,3 +218,36 @@ cc_library(
     ],
     alwayslink = 1,
 )
+
+# VERISILICON ###################################################################################
+
+cc_library(
+    name = "verisilicon_flags",
+    srcs = ["verisilicon_flags.cc"],
+    hdrs = ["verisilicon_flags.h"],
+    copts = commandline_flag_copts(),
+    deps = [
+        "//litert/c/options:litert_verisilicon_options",
+        "//litert/cc:litert_expected",
+        "//litert/cc:litert_macros",
+        "//litert/cc:litert_options",
+        "//litert/cc/options:litert_verisilicon_options",
+        "//litert/tools/flags:options_parser_registry",
+        "@com_google_absl//absl/flags:flag",
+        "@com_google_absl//absl/strings:string_view",
+    ],
+    alwayslink = 1,
+)
+
+cc_test(
+    name = "verisilicon_flags_test",
+    srcs = ["verisilicon_flags_test.cc"],
+    deps = [
+        ":verisilicon_flags",
+        "//litert/cc:litert_expected",
+        "//litert/cc/options:litert_verisilicon_options",
+        "@com_google_absl//absl/flags:flag",
+        "@com_google_absl//absl/flags:marshalling",
+        "@com_google_googletest//:gtest_main",
+    ],
+)

@@ -160,6 +160,7 @@ if(ANDROID)
             litert_tool_flags_mediatek
             litert_tool_flags_qualcomm
             litert_tool_flags_samsung
+            litert_tool_flags_verisilicon
             "-Wl,--no-whole-archive"
             ${LITERT_TOOL_COMMON_LIBS}
             tensorflow-lite
@@ -176,6 +177,7 @@ elseif(APPLE)
             litert_tool_flags_mediatek
             litert_tool_flags_qualcomm
             litert_tool_flags_samsung
+            litert_tool_flags_verisilicon
             ${LITERT_TOOL_COMMON_LIBS}
             tensorflow-lite
             ${ABSEIL_TOOL_LIBS}
@@ -192,6 +194,7 @@ else()
             litert_tool_flags_mediatek
             litert_tool_flags_qualcomm
             litert_tool_flags_samsung
+            litert_tool_flags_verisilicon
             "-Wl,--no-whole-archive"
             Threads::Threads
             tensorflow-lite
@@ -232,6 +235,7 @@ if(ANDROID)
             litert_tool_flags_mediatek
             litert_tool_flags_qualcomm
             litert_tool_flags_samsung
+            litert_tool_flags_verisilicon
             "-Wl,--no-whole-archive"
             ${LITERT_TOOL_COMMON_LIBS}
             tensorflow-lite
@@ -248,6 +252,7 @@ elseif(APPLE)
             litert_tool_flags_mediatek
             litert_tool_flags_qualcomm
             litert_tool_flags_samsung
+            litert_tool_flags_verisilicon
             ${LITERT_TOOL_COMMON_LIBS}
             tensorflow-lite
             ${ABSEIL_TOOL_LIBS}
@@ -264,6 +269,7 @@ else()
             litert_tool_flags_mediatek
             litert_tool_flags_qualcomm
             litert_tool_flags_samsung
+            litert_tool_flags_verisilicon
             "-Wl,--no-whole-archive"
             Threads::Threads
             tensorflow-lite

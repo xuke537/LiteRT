@@ -110,5 +110,6 @@ RUN_MODEL_DEPS = [
     "//litert/tools/flags/vendors:mediatek_flags",
     "//litert/tools/flags/vendors:qualcomm_flags",
     "//litert/tools/flags/vendors:samsung_flags",
+    "//litert/tools/flags/vendors:verisilicon_flags",
     "//tflite/profiling:time",
 ]
